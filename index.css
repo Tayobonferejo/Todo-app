@@ -48,3 +48,7 @@ main {
     display: none;
 
 }
+
+.containerListItem {
+    display: flex;
+}

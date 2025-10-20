@@ -2,38 +2,38 @@ const listParent = document.getElementById("todo-list");
 const imgDiv = document.getElementById("img-check");
 const image = document.getElementById("image");
 const todo = document.getElementById("todo");
-
-// listParent.addEventListener("click" , (event) => {
-
-//     if(event.target) {
-
-//         if(todo.value = "") {
-//             alert("enter a todo task")
-//         }
-
-//         else {
-//                 image.style.display = "block";
-//                 alert("enter a todo task")
-//                 console.log(todo.value);
-//         }
-
-        
-
-//     }
-// })
+const doListContainer = document.getElementById("do-list");
 
 imgDiv.addEventListener("click" , (event) => {
 
+    event.preventDefault();
+
     if(event.target) {
 
-        if(todo.value = "") {
+        if(todo.value.trim() === "") {
             alert("enter a todo task")
         }
 
         else {
                 image.style.display = "block";
-                alert("enter a todo task")
                 console.log(todo.value);
+                const listItem = document.createElement("div");
+                listItem.className = "containerListItem";
+                listItem.innerHTML = `
+                <div>
+                    <img src="/images/icon-check.svg">
+                </div>
+                <div>
+                    <p>${todo.value}</p>
+                </div>
+                <div>
+                    <img src="/images/icon-cross.svg">
+                </div>
+                `
+
+                doListContainer.appendChild(listItem);
+
+
         }
 
         
