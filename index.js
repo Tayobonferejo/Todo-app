@@ -3,6 +3,7 @@ const imgDiv = document.getElementById("img-check");
 const image = document.getElementById("image");
 const todo = document.getElementById("todo");
 const doListContainer = document.getElementById("do-list");
+let listItem 
 
 imgDiv.addEventListener("click" , (event) => {
 
@@ -17,7 +18,7 @@ imgDiv.addEventListener("click" , (event) => {
         else {
                 image.style.display = "block";
                 console.log(todo.value);
-                const listItem = document.createElement("div");
+                listItem = document.createElement("div");
                 listItem.className = "containerListItem";
                 listItem.innerHTML = `
                 <div>
@@ -38,5 +39,15 @@ imgDiv.addEventListener("click" , (event) => {
 
         
 
+    }
+})
+
+
+doListContainer.addEventListener("click", (event) => {
+    event.preventDefault();
+
+    if(event.target.tagName === "IMG") {
+        listItem.remove();
+        console.log()
     }
 })
