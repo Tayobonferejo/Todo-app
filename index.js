@@ -16,16 +16,17 @@ imgDiv.addEventListener("click" , (event) => {
         }
 
         else {
-                image.style.display = "block";
                 console.log(todo.value);
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
                 listItem.innerHTML = `
                 <div>
-                    <img src="/images/icon-check.svg">
-                </div>
-                <div>
-                    <p>${todo.value}</p>
+                    <div>
+                        <img src="/images/icon-check.svg">
+                    </div>
+                    <div>
+                        <p>${todo.value}</p>
+                    </div>
                 </div>
                 <div>
                     <img src="/images/icon-cross.svg">
