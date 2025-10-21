@@ -5,11 +5,15 @@ const todo = document.getElementById("todo");
 const doListContainer = document.getElementById("do-list");
 let listItem 
 
+const iconList = document.querySelectorAll(".iconInList");
+const listImage = document.querySelectorAll(".list-image");
+
+
 imgDiv.addEventListener("click" , (event) => {
 
     event.preventDefault();
 
-    if(event.target) {
+    if(event.target.id === "img-check") {
 
         if(todo.value.trim() === "") {
             alert("enter a todo task")
@@ -22,10 +26,10 @@ imgDiv.addEventListener("click" , (event) => {
                 listItem.innerHTML = `
                 <div class="list">
                     <div class="list-image">
-                        <img src="/images/icon-check.svg">
+                        <img src="/images/icon-check.svg" class="iconInList">
                     </div>
                     <div>
-                        <p>${todo.value}</p>
+                        <p class="textToDo">${todo.value}</p>
                     </div>
                 </div>
                 <div>
@@ -36,14 +40,14 @@ imgDiv.addEventListener("click" , (event) => {
                 doListContainer.appendChild(listItem);
 
                 todo.value = ""
-
-
         }
-
         
-
     }
+
 })
+
+
+
 
 
 doListContainer.addEventListener("click", (event) => {
@@ -51,6 +55,23 @@ doListContainer.addEventListener("click", (event) => {
 
     if(event.target.tagName === "IMG") {
         listItem.remove();
-        console.log()
     }
-})
+
+        
+    if (event.target.classList.contains("list-image")) {
+        const iconList = document.querySelector(".iconInList");
+
+        if(iconList) {
+            iconList.style.display = "block";
+        }
+
+        else {
+            console.warn("No .iconInList found inside:", event.target);
+        }
+            
+    }
+
+
+        
+
+});
