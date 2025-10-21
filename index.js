@@ -59,7 +59,9 @@ doListContainer.addEventListener("click", (event) => {
 
         
     if (event.target.classList.contains("list-image")) {
-        const iconList = document.querySelector(".iconInList");
+
+        const clickedDiv = event.target.closest(".list-image")
+        const iconList = clickedDiv.querySelector(".iconInList");
 
         if(iconList) {
             iconList.style.display = "block";
@@ -69,9 +71,6 @@ doListContainer.addEventListener("click", (event) => {
             console.warn("No .iconInList found inside:", event.target);
         }
             
-    }
-
-
-        
+    }        
 
 });
