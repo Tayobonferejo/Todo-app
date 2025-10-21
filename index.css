@@ -89,6 +89,28 @@ main {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem;
+    padding: 1rem 0.5rem;
+    padding-left: 2rem;
+    padding-right: 1rem;
     background: rgba(231, 231, 238, 0.582)
+}
+
+.list {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.list-image {
+    display: flex;
+    width: 25px;
+    height: 25px;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+    border-radius: 50%;
+}
+
+.list-image > img {
+    display: none;
 }

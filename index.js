@@ -20,8 +20,8 @@ imgDiv.addEventListener("click" , (event) => {
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
                 listItem.innerHTML = `
-                <div>
-                    <div>
+                <div class="list">
+                    <div class="list-image">
                         <img src="/images/icon-check.svg">
                     </div>
                     <div>
@@ -34,6 +34,8 @@ imgDiv.addEventListener("click" , (event) => {
                 `
 
                 doListContainer.appendChild(listItem);
+
+                todo.value = ""
 
 
         }
