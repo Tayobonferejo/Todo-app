@@ -85,7 +85,6 @@ doListContainer.addEventListener("click", (event) => {
         else {
             iconList.classList.add("icon-remove");
             textToDo.style.textDecoration = "none";
-            console.log(event.target)
         }
             
     }        
