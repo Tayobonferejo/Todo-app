@@ -3,6 +3,7 @@ const imgDiv = document.getElementById("img-check");
 const image = document.getElementById("image");
 const todo = document.getElementById("todo");
 const doListContainer = document.getElementById("do-list");
+const counterOfTask = document.getElementById("counter-list");
 let listItem 
 
 const iconList = document.querySelectorAll(".iconInList");
@@ -20,20 +21,19 @@ imgDiv.addEventListener("click" , (event) => {
         }
 
         else {
-                console.log(todo.value);
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
                 listItem.innerHTML = `
                 <div class="list">
                     <div class="list-image">
-                        <img src="/images/icon-check.svg" class="iconInList">
+                        <img src="/images/icon-check.svg" class="iconInList icon-remove">
                     </div>
                     <div>
                         <p class="textToDo">${todo.value}</p>
                     </div>
                 </div>
                 <div>
-                    <img src="/images/icon-cross.svg">
+                    <img src="/images/icon-cross.svg" class="remove">
                 </div>
                 `
 
@@ -43,6 +43,9 @@ imgDiv.addEventListener("click" , (event) => {
         }
         
     }
+    counterOfTask.textContent = doListContainer.children.length;
+
+
 
 })
 
@@ -53,22 +56,36 @@ imgDiv.addEventListener("click" , (event) => {
 doListContainer.addEventListener("click", (event) => {
     event.preventDefault();
 
-    if(event.target.tagName === "IMG") {
-        listItem.remove();
+    if(event.target.classList.contains("remove")) {
+        const classList = event.target.closest(".containerListItem");
+
+
+        if(classList) {
+            classList.remove();
+        }
+
+        counterOfTask.textContent = doListContainer.children.length;
+        
     }
 
         
     if (event.target.classList.contains("list-image")) {
 
-        const clickedDiv = event.target.closest(".list-image")
+        const clickedDiv = event.target.closest(".list-image");
+        const listDiv = clickedDiv.closest(".containerListItem")
         const iconList = clickedDiv.querySelector(".iconInList");
+        const textToDo = listDiv.querySelector(".textToDo");
 
-        if(iconList) {
-            iconList.style.display = "block";
+        if(iconList.classList.contains("icon-remove")) {
+            iconList.classList.remove("icon-remove");
+            textToDo.style.textDecoration = "line-through";
+
         }
 
         else {
-            console.warn("No .iconInList found inside:", event.target);
+            iconList.classList.add("icon-remove");
+            textToDo.style.textDecoration = "none";
+            console.log(event.target)
         }
             
     }        

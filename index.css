@@ -85,16 +85,18 @@ main {
     padding: 10px;
 }
 
-.containerListItem {
+.containerListItem , .counter{
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    padding: 1rem 0.5rem;
-    padding-left: 2rem;
-    padding-right: 1rem;
-    background: rgba(231, 231, 238, 0.582)
+    
 }
 
+.containerListItem {
+    background: rgba(231, 231, 238, 0.58);
+    justify-content: space-between;
+    padding: 1rem 1rem 1rem 2rem;
+    border-bottom: 1px solid black;
+}
 .list {
     display: flex;
     align-items: center;
@@ -111,6 +113,16 @@ main {
     border-radius: 50%;
 }
 
-.iconInList {
+.icon-remove {
     display: none;
+}
+
+.counter {
+    justify-content: space-between;
+    gap: 8px;
+}
+
+.counter-div {
+   background: rgba(231, 231, 238, 0.58);
+   padding: 1rem 1rem 1rem 2rem;
 }
