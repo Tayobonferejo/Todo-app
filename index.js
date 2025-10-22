@@ -90,3 +90,14 @@ doListContainer.addEventListener("click", (event) => {
     }        
 
 });
+
+
+menuDiv.addEventListener("click", function(event)
+{
+    event.preventDefault();
+
+    if(event.target)
+    {
+        console.log(event.target);
+    }
+});
