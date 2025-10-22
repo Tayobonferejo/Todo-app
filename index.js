@@ -4,6 +4,7 @@ const image = document.getElementById("image");
 const todo = document.getElementById("todo");
 const doListContainer = document.getElementById("do-list");
 const counterOfTask = document.getElementById("counter-list");
+const menuDiv = document.getElementById("menu-div");
 let listItem 
 
 const iconList = document.querySelectorAll(".iconInList");
@@ -23,6 +24,7 @@ imgDiv.addEventListener("click" , (event) => {
         else {
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
+                listItem.setAttribute = "draggable"
                 listItem.innerHTML = `
                 <div class="list">
                     <div class="list-image">
@@ -44,8 +46,6 @@ imgDiv.addEventListener("click" , (event) => {
         
     }
     counterOfTask.textContent = doListContainer.children.length;
-
-
 
 })
 
