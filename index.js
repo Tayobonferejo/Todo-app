@@ -99,18 +99,22 @@ doListContainer.addEventListener("click", (event) => {
 menuDiv.addEventListener("click", function(event)
 {
     event.preventDefault();
+    const completedDelete = document.querySelectorAll(".completed");
 
-    if(event.target.id)
-    {
-        console.log(event.target.id);
-    }
-
+    if(event.target.id === "active" )
+        {
+            console.log(completedDelete.length);
+                for(let i=0; i<completedDelete.length; i++)
+                {
+                    completedDelete[i].classList.add("hidden");
+                }
+        }
 });
 
  clear.addEventListener("click" , function(event) {
             event.preventDefault();
 
-            const completedDelete = document.querySelectorAll(".completed")
+            const completedDelete = document.querySelectorAll(".completed");
             console.log(completedDelete.length);
             for(let i=0; i<completedDelete.length; i++)
             {
