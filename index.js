@@ -26,6 +26,7 @@ imgDiv.addEventListener("click" , (event) => {
         else {
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
+                listItem.classList.add("active");
                 listItem.setAttribute("draggable", true);
 
                 listItem.innerHTML = `
@@ -82,7 +83,8 @@ doListContainer.addEventListener("click", (event) => {
         if(iconList.classList.contains("icon-remove")) {
             iconList.classList.remove("icon-remove");
             textToDo.style.textDecoration = "line-through";
-            listDiv.classList.add("completed")
+            listDiv.classList.add("completed");
+            listDiv.classList.remove("active");
 
         }
 
@@ -90,6 +92,7 @@ doListContainer.addEventListener("click", (event) => {
             iconList.classList.add("icon-remove");
             textToDo.style.textDecoration = "none";
             listDiv.classList.remove("completed");
+            listDiv.classList.add("active");
         }
                     
     } 
@@ -101,6 +104,7 @@ menuDiv.addEventListener("click", function(event)
 {
     event.preventDefault();
     const completedDelete = document.querySelectorAll(".completed");
+    const active = document.querySelectorAll(".active");
 
     if(event.target.id === "active" )
         {
@@ -108,6 +112,16 @@ menuDiv.addEventListener("click", function(event)
                 for(let i=0; i<completedDelete.length; i++)
                 {
                     completedDelete[i].classList.add("hidden");
+                }
+        }
+
+    
+    if(event.target.id === "completed" )
+        {
+            console.log(active.length);
+                for(let i=0; i<active.length; i++)
+                {
+                    active[i].classList.add("hidden");
                 }
         }
 });
