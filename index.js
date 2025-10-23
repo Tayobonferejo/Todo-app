@@ -26,7 +26,8 @@ imgDiv.addEventListener("click" , (event) => {
         else {
                 listItem = document.createElement("div");
                 listItem.className = "containerListItem";
-                listItem.setAttribute = "draggable"
+                listItem.setAttribute("draggable", true);
+
                 listItem.innerHTML = `
                 <div class="list">
                     <div class="list-image">
