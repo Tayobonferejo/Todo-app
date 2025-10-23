@@ -5,6 +5,8 @@ const todo = document.getElementById("todo");
 const doListContainer = document.getElementById("do-list");
 const counterOfTask = document.getElementById("counter-list");
 const menuDiv = document.getElementById("menu-div");
+const clear = document.getElementById("clear");
+
 let listItem 
 
 const iconList = document.querySelectorAll(".iconInList");
@@ -79,15 +81,17 @@ doListContainer.addEventListener("click", (event) => {
         if(iconList.classList.contains("icon-remove")) {
             iconList.classList.remove("icon-remove");
             textToDo.style.textDecoration = "line-through";
+            listDiv.classList.add("completed")
 
         }
 
         else {
             iconList.classList.add("icon-remove");
             textToDo.style.textDecoration = "none";
+            listDiv.classList.remove("completed");
         }
-            
-    }        
+                    
+    } 
 
 });
 
@@ -96,8 +100,21 @@ menuDiv.addEventListener("click", function(event)
 {
     event.preventDefault();
 
-    if(event.target)
+    if(event.target.id)
     {
-        console.log(event.target);
+        console.log(event.target.id);
     }
+
 });
+
+ clear.addEventListener("click" , function(event) {
+            event.preventDefault();
+
+            const completedDelete = document.querySelectorAll(".completed")
+            console.log(completedDelete.length);
+            for(let i=0; i<completedDelete.length; i++)
+            {
+                completedDelete[i].remove();
+            }
+    })
+ 
