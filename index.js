@@ -124,6 +124,21 @@ menuDiv.addEventListener("click", function(event)
                     active[i].classList.add("hidden");
                 }
         }
+
+    
+    if(event.target.id === "all" )
+        {
+    
+                for(let i=0; i<active.length; i++)
+                {
+                    active[i].classList.remove("hidden");
+                }
+
+                  for(let i=0; i<completedDelete.length; i++)
+                {
+                    completedDelete[i].classList.remove("hidden");
+                }
+        }
 });
 
  clear.addEventListener("click" , function(event) {
