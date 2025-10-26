@@ -109,9 +109,15 @@ menuDiv.addEventListener("click", function(event)
     if(event.target.id === "active" )
         {
             console.log(completedDelete.length);
+            
                 for(let i=0; i<completedDelete.length; i++)
                 {
                     completedDelete[i].classList.add("hidden");
+                }
+
+                  for(let i=0; i<active.length; i++)
+                {
+                    active[i].classList.remove("hidden");
                 }
         }
 
@@ -119,7 +125,7 @@ menuDiv.addEventListener("click", function(event)
     if(event.target.id === "completed" )
         {
             console.log(active.length);
-                for(let i=0; i<active.length; i++)
+                 for(let i=0; i<active.length; i++)
                 {
                     active[i].classList.add("hidden");
                 }
