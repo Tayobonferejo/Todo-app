@@ -10,6 +10,7 @@ const clear = document.getElementById("clear");
 let listItem 
 
 const iconList = document.querySelectorAll(".iconInList");
+const draggable = document.querySelectorAll(".containerListItem");
 const listImage = document.querySelectorAll(".list-image");
 
 
