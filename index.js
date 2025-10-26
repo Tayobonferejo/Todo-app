@@ -123,6 +123,11 @@ menuDiv.addEventListener("click", function(event)
                 {
                     active[i].classList.add("hidden");
                 }
+
+                 for(let i=0; i<completedDelete.length; i++)
+                {
+                    completedDelete[i].classList.remove("hidden");
+                }
         }
 
     
