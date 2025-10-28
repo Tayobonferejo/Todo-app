@@ -10,7 +10,7 @@ const clear = document.getElementById("clear");
 let listItem 
 
 const iconList = document.querySelectorAll(".iconInList");
-const draggable = document.querySelectorAll(".containerListItem");
+const draggables = document.querySelectorAll(".containerListItem");
 const listImage = document.querySelectorAll(".list-image");
 
 
@@ -55,9 +55,6 @@ imgDiv.addEventListener("click" , (event) => {
 })
 
 
-
-
-
 doListContainer.addEventListener("click", (event) => {
     event.preventDefault();
 
@@ -86,7 +83,6 @@ doListContainer.addEventListener("click", (event) => {
             textToDo.style.textDecoration = "line-through";
             listDiv.classList.add("completed");
             listDiv.classList.remove("active");
-
         }
 
         else {
@@ -94,9 +90,13 @@ doListContainer.addEventListener("click", (event) => {
             textToDo.style.textDecoration = "none";
             listDiv.classList.remove("completed");
             listDiv.classList.add("active");
-        }
-                    
+        }                 
     } 
+
+     if (event.target.classList.contains("containerListItem")) 
+        {
+            console.log("drag start on:", event.target.textContent);
+        }
 
 });
 
@@ -164,3 +164,29 @@ menuDiv.addEventListener("click", function(event)
             }
     })
  
+let draggedItem = null;
+
+doListContainer.addEventListener("dragstart", event => {
+  if (event.target.classList.contains("containerListItem")) {
+    draggedItem = event.target;
+    console.log("drag start on:", draggedItem.textContent);
+  }
+});
+
+doListContainer.addEventListener("dragover", event => {
+  event.preventDefault(); // Important! Enables dropping
+});
+
+doListContainer.addEventListener("drop", event => {
+  event.preventDefault();
+  const dropTarget = event.target.closest(".containerListItem");
+  if (dropTarget && draggedItem && dropTarget !== draggedItem) {
+    doListContainer.insertBefore(draggedItem, dropTarget);
+    console.log("Dropped:", draggedItem.textContent);
+  }
+});
+
+doListContainer.addEventListener("dragend", event => {
+  console.log("drag end on:", event.target.textContent);
+  draggedItem = null;
+});
