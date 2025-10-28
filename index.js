@@ -1,4 +1,3 @@
-const listParent = document.getElementById("todo-list");
 const imgDiv = document.getElementById("img-check");
 const image = document.getElementById("image");
 const todo = document.getElementById("todo");
@@ -8,9 +7,9 @@ const menuDiv = document.getElementById("menu-div");
 const clear = document.getElementById("clear");
 
 let listItem 
+let draggedItem = null;
 
 const iconList = document.querySelectorAll(".iconInList");
-const draggables = document.querySelectorAll(".containerListItem");
 const listImage = document.querySelectorAll(".list-image");
 
 
@@ -70,7 +69,6 @@ doListContainer.addEventListener("click", (event) => {
         
     }
 
-        
     if (event.target.classList.contains("list-image")) {
 
         const clickedDiv = event.target.closest(".list-image");
@@ -97,9 +95,7 @@ doListContainer.addEventListener("click", (event) => {
         {
             console.log("drag start on:", event.target.textContent);
         }
-
 });
-
 
 menuDiv.addEventListener("click", function(event)
 {
@@ -165,7 +161,7 @@ menuDiv.addEventListener("click", function(event)
     })
 
     
- let draggedItem = null;
+
 
 doListContainer.addEventListener("dragstart", event => {
   if (event.target.classList.contains("containerListItem")) {
