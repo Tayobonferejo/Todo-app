@@ -163,8 +163,9 @@ menuDiv.addEventListener("click", function(event)
                 completedDelete[i].remove();
             }
     })
- 
-let draggedItem = null;
+
+    
+ let draggedItem = null;
 
 doListContainer.addEventListener("dragstart", event => {
   if (event.target.classList.contains("containerListItem")) {
@@ -174,15 +175,26 @@ doListContainer.addEventListener("dragstart", event => {
 });
 
 doListContainer.addEventListener("dragover", event => {
-  event.preventDefault(); // Important! Enables dropping
+  event.preventDefault(); // Allow drop
 });
 
 doListContainer.addEventListener("drop", event => {
   event.preventDefault();
   const dropTarget = event.target.closest(".containerListItem");
-  if (dropTarget && draggedItem && dropTarget !== draggedItem) {
-    doListContainer.insertBefore(draggedItem, dropTarget);
-    console.log("Dropped:", draggedItem.textContent);
+  if (!dropTarget || dropTarget === draggedItem) return;
+
+  const bounding = dropTarget.getBoundingClientRect();
+  const offset = event.clientY - bounding.top; // Y position of cursor inside the item
+  const height = bounding.height;
+
+  if (offset > height / 2) {
+    // Dropped in bottom half → insert *after*
+    dropTarget.after(draggedItem);
+    console.log("Dropped below:", dropTarget.textContent);
+  } else {
+    // Dropped in top half → insert *before*
+    dropTarget.before(draggedItem);
+    console.log("Dropped above:", dropTarget.textContent);
   }
 });
 
